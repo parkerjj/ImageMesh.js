@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .c {
+            border: 1px solid #000
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML5 Canvas</h1>
+    <h2>The createImageData() Method</h2>
+    Chose an image: <input type=file><br>
+    <canvas class="c" id=origin width=600 height=400></canvas>
+
+    <br>
+    <br>
+
+    <canvas class="c" id="workplace" width="600" height="400"></canvas>
+
+
+    <script>
+        const c_left = document.getElementById("origin");
+        const ctx_left = c_left.getContext("2d");
+
+        const c_right = document.getElementById("workplace");
+        const ctx_right = c_right.getContext("2d");
+
+
+        document.querySelector("input").onchange = function (e) {
+
+            var file = e.target.files[0],
+                url = URL.createObjectURL(file),
+                img = new Image();
+
+            img.onload = function () {
+                URL.revokeObjectURL(this.src);
+                c_left.width = this.width
+                c_left.height = this.height
+                c_left.getContext("2d").drawImage(this, 0, 0);
+
+
+
+                c_right.width = this.width
+                c_right.height = this.height
+                var idata = c_left.getContext("2d").getImageData(0, 0, this.width, this.height);
+                ctx_right.putImageData(idata, 0, 0);
+            };
+
+            img.src = url;
+
+
+        };
+
+
+    </script>
+
+</body>
+
+</html>
