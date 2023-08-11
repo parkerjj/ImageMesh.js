@@ -25,11 +25,9 @@ declare namespace ImageMesh {
         height
 
      * @param ImageData ImageData
-     * @param height Integer
-     * @param width Integer
      * @param delta Integer
      */
-    export function createMesh(imageData: ImageData, height: number, width: number, delta: number)
+    export function createMesh(imageData: ImageData, delta: number)
 }
 
 declare module 'image-mesh' {

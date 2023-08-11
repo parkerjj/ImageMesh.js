@@ -5,7 +5,8 @@
   "description": "Generate .obj mesh from a image with alpha channel.",
   "scripts": {
     "test": "jest",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "watch": "concurrently \"rollup -c -w\" \"tsc -watch -p ./\""
   },
   "keywords": [
     "imagemesh"
